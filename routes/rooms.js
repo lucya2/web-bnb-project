@@ -12,7 +12,6 @@ function needAuth(req, res, next) {
     return res.redirect('/signin');
   }
 }
-
 router.get('/lists/', function(req, res, next) {
   Room.find({}, function(err, rooms) {
     if (err) {
@@ -21,15 +20,12 @@ router.get('/lists/', function(req, res, next) {
     res.render('rooms/index', {rooms: rooms});
   });
 });
-
 router.get('/hosting', needAuth, function(req, res, next) {
     res.render('rooms/hosting');
 });
 router.get('/ix', needAuth, function(req, res, next) {
     res.render('rooms/ix');
 });
-
-
 router.get('/:id/new', function(req, res, next) {
     User.findById(req.params.id, function(err, user) {
         if (err) {
@@ -59,7 +55,6 @@ router.get('/:id/edit', function(req, res, next) {
         res.render('rooms/edit', {room: room});
     }); 
 });
-
 router.get('/:id', function (req, res, next) {
     Room.findById(req.params.id, function (err, room) {
         if (err) {
@@ -159,7 +154,6 @@ router.post('/', function(req, res, next) {
       content2: req.body.content2,
       roomstyle: req.body.roomstyle,
     });
-
     newRoom.save(function(err) {
       if (err) {
         return next(err);
@@ -169,7 +163,6 @@ router.post('/', function(req, res, next) {
     });
   });
 });
-
 router.put('/:id', function(req, res, next) {
   Room.findById({_id: req.params.id}, function(err, room) {
     if (err) {
@@ -188,7 +181,6 @@ router.put('/:id', function(req, res, next) {
     });
   });
 });
-
 router.delete('/:id', function(req, res, next) {
   Room.findOneAndRemove({_id: req.params.id}, function(err) {
     if (err) {

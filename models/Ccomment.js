@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
 var schema = new Schema({
   name: {type: String, required: true, trim: true},
   email: {type: String, required: true, trim: true},
@@ -11,8 +10,6 @@ var schema = new Schema({
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
 });
-
-
 var Ccomment = mongoose.model('Ccomment', schema);
 
 module.exports = Ccomment;

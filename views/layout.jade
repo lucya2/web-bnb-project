@@ -4,22 +4,18 @@ html(lang='ko')
     title= title
     meta(charset='UTF-8')
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
-    //
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap-theme.css')
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet', href='/bower_components/font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(type='text/javascript', src='/bower_components/jquery/dist/jquery.js')
     script(type='text/javascript', src='/bower_components/bootstrap/dist/js/bootstrap.js')
-    //
     link(rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css") 
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
     script(src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js") 
     script(src="http://dmaps.daum.net/map_js_init/postcode.v2.js")
-    //지도api
     script(type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=50a534e7aaa7c37ade60ef03785cfe19&libraries=services,clusterer,drawing")
     script(type='text/javascript', src='/javascripts/address.js') 
-
   body
     block top-nav
       include ./includes/topnav
@@ -30,9 +26,7 @@ html(lang='ko')
             each msg in texts
               p= msg      
     block hero-unit
-           
     block content
-
     block footer
       include ./includes/footer
 

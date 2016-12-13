@@ -5,7 +5,6 @@ var express = require('express'),
     Reservation = require('../models/Reservation');
 var router = express.Router();
 
-
 function validateForm(form, options) {
   var name = form.name || "";
   var email = form.email || "";
@@ -35,7 +34,6 @@ function validateForm(form, options) {
   return null;
 }
 
-/* GET users listing. */
 router.get('/:id/index', function(req, res, next) {
   User.find({}, function(err, users) {
     if (err) {
@@ -62,11 +60,9 @@ router.get('/', function(req, res, next) {
     res.render('users/index', {users: users});
   });
 });
-
 router.get('/new', function(req, res, next) {
   res.render('users/new', {messages: req.flash()});
 });
-
 router.get('/:id/edit', function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     if (err) {
@@ -75,7 +71,6 @@ router.get('/:id/edit', function(req, res, next) {
     res.render('users/edit', {user: user});
   });
 });
-
 router.put('/:id/auth/', function(req,res,next){
   User.findById({_id: req.params.id}, function(err, user){
      if (err) {
@@ -91,8 +86,6 @@ router.put('/:id/auth/', function(req,res,next){
     });
   });
 });
-
-
 router.delete('/:id', function(req, res, next) {
   User.findById({_id: req.params.id}, function(err, user){
     if (err) {
@@ -147,7 +140,6 @@ router.delete('/:id', function(req, res, next) {
   });
   });
 });
-
 router.delete('/show/:id', function(req, res, next) {
   User.findById({_id: req.params.id}, function(err, user){
     if (err) {
@@ -203,7 +195,6 @@ router.delete('/show/:id', function(req, res, next) {
   });
   });
 });
-
 router.get('/:id', function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     if (err) {
@@ -212,14 +203,12 @@ router.get('/:id', function(req, res, next) {
     res.render('users/show', {user: user});
   });
 });
-
 router.put('/:id', function(req, res, next) {
   var err = validateForm(req.body);
   if (err) {
     req.flash('danger', err);
     return res.redirect('back');
   }
-
   User.findById({_id: req.params.id}, function(err, user) {
     if (err) {
       return next(err);
@@ -232,13 +221,11 @@ router.put('/:id', function(req, res, next) {
       req.flash('danger', '현재 비밀번호가 일치하지 않습니다.');
       return res.redirect('back');
     }
-
     user.name = req.body.name;
     user.email = req.body.email;
     if (req.body.password) {
       user.password = user.generateHash(req.body.password);
     }
-
     user.save(function(err) {
       if (err) {
         return next(err);
@@ -248,7 +235,6 @@ router.put('/:id', function(req, res, next) {
     });
   });
 });
-
 router.post('/', function(req, res, next) {
   var err = validateForm(req.body, {needPassword: true});
   if (err) {
@@ -268,7 +254,6 @@ router.post('/', function(req, res, next) {
       email: req.body.email,
     });
     newUser.password = newUser.generateHash(req.body.password);
-
     newUser.save(function(err) {
       if (err) {
         return next(err);

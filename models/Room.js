@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
 var schema = new Schema({
   email: {type: String, required: true, trim: true},
   title:{type: String, unique: true, required: true},
@@ -20,8 +19,6 @@ var schema = new Schema({
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
 });
-
-
 var Room = mongoose.model('Room', schema);
 
 module.exports = Room;

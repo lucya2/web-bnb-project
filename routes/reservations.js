@@ -27,7 +27,6 @@ router.get('/:id', function(req, res, next) {
     });
   });  
 });
-
 router.get('/:id', function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     if (err) {
@@ -36,7 +35,6 @@ router.get('/:id', function(req, res, next) {
     res.render('users/show', {user: user});
   });
 });
-    
 router.get('/:id/reservestate', function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     if (err) {
@@ -50,7 +48,6 @@ router.get('/:id/reservestate', function(req, res, next) {
     });
   });
 });
-
 router.get('/:id/manager', function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     if (err) {
@@ -64,7 +61,6 @@ router.get('/:id/manager', function(req, res, next) {
     });
   });
 });
-
 router.get('/:id/show', function(req, res, next) {
   Room.findById(req.params.id, function(err, room) {
     if (err) {
@@ -78,7 +74,6 @@ router.get('/:id/show', function(req, res, next) {
     });
   });
 });
-
 router.get('/:id/profile', function(req, res, next) {
   Reservation.findById(req.params.id, function(err, reservation) {
     if (err) {
@@ -92,7 +87,6 @@ router.get('/:id/profile', function(req, res, next) {
     });
   });
 });
-
 router.put('/:id/accept', function(req,res,next){
   Room.findById({_id: req.params.id}, function(err, room){
      if (err) {
@@ -116,7 +110,6 @@ router.put('/:id/accept', function(req,res,next){
     });
   });
 });
-
 router.put('/:id/refuse', function(req,res,next){
   Room.findById({_id: req.params.id}, function(err, room){
      if (err) {
@@ -140,7 +133,6 @@ router.put('/:id/refuse', function(req,res,next){
     });
   });
 });
-
 router.post('/:id', function(req, res, next) {
   Room.findById(req.params.id, function(err, room) {
     if (err) {
@@ -171,7 +163,6 @@ router.post('/:id', function(req, res, next) {
         toDate: req.body.toDate,
         capacity: req.body.capacity,
       });
-      
       newReservation.save(function(err) {
         if (err) {
           return next(err);

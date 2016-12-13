@@ -3,7 +3,6 @@ extends ../layout
 block content
   .container
     h1.page-header 수정
-
     form(action = "/rooms/#{room.id}?_method=PUT", method='POST')
       .form-group
         label(for='email') 이메일
@@ -45,11 +44,9 @@ block content
       .form-group      
         label(for='content2') 시설 및 규칙
         textarea.form-control(id='content2', rows='3', name='content2')= room.content2        
-
       div.form-actions
         a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
         | 
         button.btn.btn-primary(type='submit') 완료
-
 
   script(type='text/javascript', src='/javascripts/address.js') 

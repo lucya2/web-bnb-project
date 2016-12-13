@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
 var schema = new Schema({
   title:{type: String, required: true},
   name: {type: String, required: true, trim: true},
@@ -17,8 +16,6 @@ var schema = new Schema({
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
 });
-
-
 var Reservation = mongoose.model('Reservation', schema);
 
 module.exports = Reservation;
