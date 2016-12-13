@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 
+    .row
+      .col-sm-6.col-md-6
+        .thumbnail
+          .caption
+            h3.Thumbnail 예약목록
+            img(src='/images/4547315915224_N_N_400.jpg')
+            p 내가 예약한 숙소의 정보를 확인하세요.
+            p 
+              a.btn.btn-primary(href="/reservations/#{currentUser._id}/reservestate", role="button") 확인
+      .col-sm-6.col-md-6
+        .thumbnail
+          .caption
+            h3.Thumbnail 고객관리
+            img(src='/images/크기변환_images.jpg')
+            p 내 방의 고객을 관리하세요.
+            p 
+              a.btn.btn-primary(href="/reservations/#{currentUser._id}/manager", role="button") 확인
+   

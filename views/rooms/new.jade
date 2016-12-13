@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 숙소 등록
+
+    form(action = "/rooms", method='POST')
+      .form-group
+        label(for='email') 이메일
+        input.form-control(type='email', id='email', name='email', value=user.email)
+      .form-group
+        label(for='title') 방이름
+        input.form-control(type='text', id='title', name='title', placeholder='title')
+      .form-group
+        label(for='roomstyle') 방종류
+        select.form-control(type='text',id='roomstyle',name='roomstyle')
+          option 개인실
+          option 다인실
+          option 집전체
+        label(for='capacity') 인원수(최대)
+        select.form-control(type='text',id='capacity',name='capacity')
+          option 1
+          option 2
+          option 3
+          option 4
+          option 5
+          option 6
+          option 7
+          option 8
+          option 9
+        label(for='cost') 비용
+        input.form-control(type='text', id='cost', name='cost', placeholder='ex)10000')
+        label(for='city') 도시
+        input.form-control(type='text', id='city', name='city', placeholder='OO시 까지만 입력해 주세요.')                    
+      .form-group
+        label(for='bigAddress') 주소
+        input(type="text", id="postcode", name='postcode', placeholder="우편번호")
+        input(type="button", onclick="execDaumPostcode()", value="우편번호 찾기")
+        br
+        input.form-control(type="text", id="bigAddress", name='bigAddress', placeholder="주소")
+        input.form-control(type="text", id="smallAddress", name='smallAddress', placeholder="상세주소")
+      .form-group      
+        label(for='content') 소개
+        textarea.form-control(id='content', rows='3', name='content', placeholder='')
+      .form-group      
+        label(for='content2') 시설 및 규칙
+        textarea.form-control(id='content2', rows='3', name='content2', placeholder='')
+      div.form-actions
+        button.btn.btn-primary(type='submit') 완료 
+        | 
+        a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
+  script(type='text/javascript', src='/javascripts/address.js') 

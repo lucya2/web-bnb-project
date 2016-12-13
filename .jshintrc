@@ -4,6 +4,10 @@
   "undef": true,
   "globals": {
     "jQuery": true,
+    "Room": true,
+    "Reservation": true,
+    "Ccomment": true,
+    "User": true,
     "Promise"   : true
   },
   "node": true

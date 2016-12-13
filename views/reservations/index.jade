@@ -1,0 +1,62 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 예약 하기
+    form(action='/reservations/#{room.id}', method='POST')
+      .form-group
+        label(for='name') 이름
+        input.form-control(type='text', id='name', name='name', placeholder='Your name', value=user.name)
+      .form-group
+        label(for='requesterEmail') 이메일 (본인)
+        input.form-control(type='requesterEmail', id='requesterEmail', name='requesterEmail', placeholder='requesterEmail', value=user.email)
+      .form-group
+        label(for='hostEmail') 이메일 (주인)
+        input.form-control(type='hostEmail', id='hostEmail', name='hostEmail', placeholder='hostEmail', value=room.email)
+      .form-group
+        label(for='capacity') 인원
+        input.form-control(type='capacity', id='capacity', name='capacity', placeholder=room.capacity)
+        br
+      .form-group
+        label(for='Date') 예약 날짜 
+        br
+        input(type='text', id='fromDate', name='fromDate', placeholder='check in')
+        span ~
+        input(type='text', id='toDate', name='toDate', placeholder='check out')
+        br
+        br
+      //-  .form-group
+      //-   label(for='cost') 가격
+      //-   input.form-control(type='cost', id='cost', name='cost', value=(room.cost * num))
+      .div.form-actions
+        button.btn.btn-primary(type='submit') 신청하기
+        | 
+        a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
+ 
+  script(type='text/javascript').
+    $( function() {
+    var dateFormat = "mm/dd/yy",
+      from = $( "#fromDate" )
+        .datepicker({
+          changeMonth: true,
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#toDate" ).datepicker({
+        changeMonth: true,
+        maxDate:"+1M"
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+      return date;
+      }
+    });

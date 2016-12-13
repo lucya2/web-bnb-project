@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 신청내역서
+    .form-group
+        label 이름 : #{reservation.name}
+    .form-group
+        label 이메일 : 
+            a(href='/reservations/#{reservation.id}/profile')=reservation.requesterEmail        
+    .form-group
+        label 인원수 : #{reservation.capacity} / #{room.capacity}
+    .form-group
+        label 숙박기간 : #{moment(reservation.fromDate).format('YYYY-MM-DD')} ~ #{moment(reservation.toDate).format('YYYY-MM-DD')}   

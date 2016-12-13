@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 예약 목록
+    table.table.table-bordered
+      thead
+        tr
+          th 주문번호
+          th 방이름
+          th 신청인원
+          th 숙박기간
+          th 신청날짜
+          th 예약상태
+      tbody
+        each reservation in reservations
+          tr
+            td= reservation.id
+            td
+              a(href='/rooms/#{reservation.id}/host')= reservation.title
+            td= reservation.capacity
+            td #{moment(reservation.fromDate).format('YYYY-MM-DD')} ~ #{moment(reservation.toDate).format('YYYY-MM-DD')} 
+            td= moment(reservation.createdAt).format('YYYY-MM-DD HH:mm:ss')
+            td= reservation.state
+    
+  

@@ -1,0 +1,55 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 수정
+
+    form(action = "/rooms/#{room.id}?_method=PUT", method='POST')
+      .form-group
+        label(for='email') 이메일
+        input.form-control(type='email', id='email', name='email', value=room.email)
+      .form-group
+        label(for='title') 방이름
+        input.form-control(type='text', id='title', name='title', value=room.title)
+      .form-group
+        label(for='roomstyle') 방종류
+        select.form-control(type='text',id='roomstyle',name='roomstyle')
+          option 개인실
+          option 다인실
+          option 집전체
+        label(for='capacity') 인원수(최대)
+        select.form-control(type='text',id='capacity',name='capacity')
+          option 1
+          option 2
+          option 3
+          option 4
+          option 5
+          option 6
+          option 7
+          option 8
+          option 9
+        label(for='cost') 비용
+        input.form-control(type='text', id='cost', name='cost', placeholder='ex)10000')
+        label(for='city') 도시
+        input.form-control(type='text', id='city', name='city', placeholder='OO시 까지만 입력해 주세요.')                
+      .form-group
+        label(for='bigAddress') 주소
+        input(type="text", id="postcode", placeholder="우편번호", name='postcode', value=room.postcode)
+        input(type="button", onclick="execDaumPostcode()", value="우편번호 찾기")
+        br
+        input.form-control(type="text", id="bigAddress", placeholder="주소", name='bigAddress', value=room.bigAddress)
+        input.form-control(type="text", id="smallAddress", placeholder="상세주소", name='smallAddress', value=room.smallAddress)
+      .form-group      
+        label(for='content') 소개
+        textarea.form-control(id='content', rows='3', name='content')= room.content
+      .form-group      
+        label(for='content2') 시설 및 규칙
+        textarea.form-control(id='content2', rows='3', name='content2')= room.content2        
+
+      div.form-actions
+        a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
+        | 
+        button.btn.btn-primary(type='submit') 완료
+
+
+  script(type='text/javascript', src='/javascripts/address.js') 

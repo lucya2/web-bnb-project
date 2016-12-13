@@ -1,3 +1,4 @@
+//60132289 양희원
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -13,6 +14,8 @@ var configAuth = require('./config/auth');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var rooms = require('./routes/rooms');
+var reservations = require('./routes/reservations');
 var routeAuth = require('./routes/auth');
 
 var app = express();
@@ -26,7 +29,7 @@ if (app.get('env') === 'development') {
 app.locals.moment = require('moment');
 
 // mongodb connect
-mongoose.connect('mongodb://a:a@ds021299.mlab.com:21299/a');
+mongoose.connect('mongodb://qwe:qwe@ds021299.mlab.com:21299/a');
 mongoose.connection.on('error', console.log);
 
 // uncomment after placing your favicon in /public
@@ -42,10 +45,10 @@ app.use(session({
   saveUninitialized: true,
   secret: 'long-long-long-secret-string-1313513tefgwdsvbjkvasd'
 }));
+
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(path.join(__dirname, '/bower_components')));
-
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -61,6 +64,8 @@ configAuth(passport);
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/rooms', rooms);
+app.use('/reservations', reservations);
 routeAuth(app, passport);
 
 // catch 404 and forward to error handler

@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header
+      a(href='/rooms/lists') 숙소목록
+    .row
+      each room in rooms
+        .col-sm-6.col-md-2
+          .thumbnail
+            img(src="/images/8678764_1500_1023.jpg")
+            .caption
+              span.yes=room.state
+              h5.Thumbnail (#{room.roomstyle}) 
+              h5.Thumbnail 숙소이름 : #{room.title}
+              h5.Thumbnail 주소 : #{room.bigAddress}
+              h5.Thumbnail 비용 : #{room.cost} 원
+              p
+                a.btn.btn-primary(href="/rooms/#{room.id}" role="button") 상세 보기
+    form(action="/rooms/search", method='POST')
+      .row
+        .col-lg-4
+          .input-group
+            input(type="text",name='search',id='search', class="form-control" placeholder="시까지만 입력해 주세요. ex)OO시")
+            span.input-group-btn
+              button.btn.btn-default(type="submit" ) 검색
+    br
+    a.btn.btn-primary(href='/rooms/hosting') 숙소 등록하기
+
+script(type='text/javascript').
+  var generateRandom = function (min, max) {
+  var ranNum = Math.floor(Math.random()*(max-min+1)) + min;
+  return ranNum;
+  }

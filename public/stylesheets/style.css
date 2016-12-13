@@ -34,25 +34,19 @@ body {
     min-height: 400px; }
 
 a {
-  color: #00B7FF; }
+  color: #ab5f3a; }
 
-.jumbotron {
-  margin-top: -1em;
-  background: url("/images/bg.jpg") no-repeat left top;
-  -webkit-background-size: 100%;
-  -moz-background-size: 100%;
-  -o-background-size: 100%;
-  background-size: 100%;
-  min-height: 20em;
-  color: #fff;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); }
+#del {
+  margin-left: 1em; }
 
-.form-actions {
-  padding: 19px 20px 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #e5e5e5; }
+span.no {
+  color: red; }
+
+span.yes {
+  color: blue; }
+
+span.ing {
+  color: green; }
 
 .footer {
   margin-top: 1em;
@@ -65,6 +59,10 @@ a {
     .footer .container .text-muted {
       margin: 20px 0;
       color: #bbb; }
+
+.tit {
+  margin-top: 3em;
+  margin-left: 2em; }
 
 form.todos {
   width: 100%;

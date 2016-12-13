@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 숙소등록
+    .row
+      .col-sm-6.col-md-6
+        h2 숙소등록 하는 법
+          h3
+            p
+            |1. 방 이름을 입력하세요.
+            br
+            br
+            |2. 방 종류를 선택하세요.(개인실,다인실,집전체)
+            br
+            br
+            |3. 인원 수를 선택하세요.
+            br
+            br
+            |4. 비용을 입력하세요.(비용은 1일 단위입니다.)
+            br
+            br
+            |5. 도시를 입력하세요.(OO시 만 입력해주세요.)
+            br
+            br
+            |6. 주소를 입력하세요.
+            br
+            br
+            |7. 내용 및 이용규칙을 입력하세요.
+            p           
+      .col-sm-6.col-md-6
+        .thumbnail
+          img(src='/images/포맷변환_Pretty_House.png')
+          .caption
+            h3.Thumbnail 산 속의 오두막집, 남는 방 등 회원님의 공간에 게스트를 맞이하고 수입을 누리세요.
+            p 
+            p 
+              a.btn.btn-primary(href="/rooms/#{currentUser._id}/new", role="button") 숙소 등록
+                     
+   
